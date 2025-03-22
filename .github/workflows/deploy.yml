@@ -32,6 +32,9 @@ jobs:
       
     - name: Create .nojekyll file
       run: touch dist/.nojekyll
+      
+    - name: Create CNAME file in dist
+      run: echo "ankitsin.in" > dist/CNAME
         
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
