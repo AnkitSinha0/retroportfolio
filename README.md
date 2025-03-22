@@ -5,29 +5,30 @@ This is a retro-styled portfolio website built with React, Vite, and Tailwind CS
 
 ## Deployment
 
-This project is configured to automatically deploy to GoDaddy hosting when changes are pushed to the main branch.
+This project is configured to automatically deploy to GitHub Pages when changes are pushed to the main branch.
 
-### GitHub Actions Setup
+### GitHub Pages Setup
 
-To enable automatic deployment to GoDaddy, you need to set the following secrets in your GitHub repository:
+The deployment is handled automatically by GitHub Actions. The workflow:
+1. Builds your React application
+2. Deploys the built files to the `gh-pages` branch
+3. GitHub Pages then serves the content from this branch
 
-1. Go to your GitHub repository
-2. Click on "Settings" → "Secrets and variables" → "Actions"
-3. Add the following secrets:
-   - `FTP_SERVER`: Your GoDaddy FTP server address (usually ftp.yourdomain.com)
-   - `FTP_USERNAME`: Your GoDaddy FTP username
-   - `FTP_PASSWORD`: Your GoDaddy FTP password
-   - `FTP_SERVER_DIR`: The directory on the server where files should be uploaded (e.g., `/public_html/` or `/`)
-
-The GitHub Action will:
-1. Build your React application
-2. Deploy the built files to GoDaddy via FTP
+For custom domain setup:
+1. Add your domain in your GitHub repository settings under "Pages"
+2. A CNAME file is already included in the repository
+3. Set up the necessary DNS records with your domain provider:
+   - Type: A, Name: @, Value: 185.199.108.153
+   - Type: A, Name: @, Value: 185.199.109.153
+   - Type: A, Name: @, Value: 185.199.110.153
+   - Type: A, Name: @, Value: 185.199.111.153
+   - Type: CNAME, Name: www, Value: ankitsin.in
 
 ### Manual Deployment
 
 If you need to deploy manually:
 1. Run `npm run build` to create the production build
-2. Upload the contents of the `dist` directory to your GoDaddy hosting
+2. Deploy the contents of the `dist` directory to your hosting service
 
 ## Development
 
