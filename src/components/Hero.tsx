@@ -1,13 +1,87 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import SocialLinks from "./SocialLinks";
 
 const Hero: React.FC = () => {
+  useEffect(() => {
+    // Pixel animation setup
+    const canvas = document.getElementById('pixel-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas size
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    
+    // Pixel properties
+    const pixelSize = 20;
+    const pixels: {x: number, y: number, color: string, speed: number, alpha: number}[] = [];
+    
+    // Generate pixels
+    const generatePixels = () => {
+      const cols = Math.ceil(canvas.width / pixelSize);
+      const rows = Math.ceil(canvas.height / pixelSize);
+      
+      for (let i = 0; i < 50; i++) {
+        pixels.push({
+          x: Math.random() * cols * pixelSize,
+          y: Math.random() * rows * pixelSize,
+          color: `hsl(${263}, 90%, 51%)`,
+          speed: 0.2 + Math.random() * 0.8,
+          alpha: 0.1 + Math.random() * 0.2
+        });
+      }
+    };
+    
+    generatePixels();
+    
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      pixels.forEach(pixel => {
+        ctx.fillStyle = pixel.color.replace(')', `, ${pixel.alpha})`);
+        ctx.fillRect(
+          Math.floor(pixel.x / pixelSize) * pixelSize,
+          Math.floor(pixel.y / pixelSize) * pixelSize,
+          pixelSize,
+          pixelSize
+        );
+        
+        // Move pixels upward
+        pixel.y -= pixel.speed;
+        
+        // Reset when out of screen
+        if (pixel.y < -pixelSize) {
+          pixel.y = canvas.height + pixelSize;
+          pixel.x = Math.random() * canvas.width;
+        }
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', setCanvasSize);
+    };
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <canvas id="pixel-canvas" className="absolute inset-0 w-full h-full z-0" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5"></div>
       </div>
-      <div className="container mx-auto section-transition">
+      <div className="container mx-auto section-transition z-10 relative">
         <div className="flex flex-col items-center justify-center text-center">
           <div className="relative w-32 h-32 mb-8">
             <div className="pixel-shadow absolute inset-0 w-full h-full rounded-full bg-primary animate-pulse opacity-30"></div>

@@ -136,6 +136,15 @@
       opacity: 1;
     }
   }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -175,4 +184,8 @@
   opacity: 0;
   transform: scale(0.98);
   transition: opacity 300ms, transform 300ms;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
 }
