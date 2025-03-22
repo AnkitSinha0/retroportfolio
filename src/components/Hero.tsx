@@ -10,10 +10,14 @@ const Hero: React.FC = () => {
       </div>
       <div className="container mx-auto section-transition">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="relative w-28 h-28 mb-8">
-            <div className="pixel-shadow absolute inset-0 w-full h-full rounded bg-primary animate-pulse opacity-30"></div>
-            <div className="relative w-full h-full rounded overflow-hidden pixel-border border-2 border-black dark:border-gray-700">
-              <div className="w-full h-full bg-gradient-to-tr from-purple-500 to-blue-500"></div>
+          <div className="relative w-32 h-32 mb-8">
+            <div className="pixel-shadow absolute inset-0 w-full h-full rounded-full bg-primary animate-pulse opacity-30"></div>
+            <div className="relative w-full h-full rounded-full overflow-hidden pixel-border border-2 border-black dark:border-gray-700">
+              <img 
+                src="/lovable-uploads/5894b812-7e3d-4680-b4dc-70f725f8b573.png" 
+                alt="Ankit Sinha"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
             </div>
           </div>
           
@@ -40,7 +44,7 @@ const Hero: React.FC = () => {
                 document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <span className="absolute inset-0 bg-primary/10 transition-all duration-300 ease-out transform group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-1"></span>
+              <span className="absolute inset-0 bg-primary/10 transition-all duration-300 ease-out transform hover:scale-105 hover:translate-x-1 hover:-translate-y-1"></span>
               <span className="relative">View Projects</span>
             </a>
             <a
@@ -51,7 +55,7 @@ const Hero: React.FC = () => {
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <span className="absolute inset-0 bg-gray-800/10 dark:bg-gray-200/10 transition-all duration-300 ease-out transform group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-1"></span>
+              <span className="absolute inset-0 bg-gray-800/10 dark:bg-gray-200/10 transition-all duration-300 ease-out transform hover:scale-105 hover:translate-x-1 hover:-translate-y-1"></span>
               <span className="relative">Contact Me</span>
             </a>
           </div>

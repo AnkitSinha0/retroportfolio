@@ -1,25 +1,30 @@
 
 import React from "react";
+import { 
+  Code, Terminal, Database, Coffee, Layout, 
+  Figma, GitBranch, Github, Cpu, FileJson
+} from "lucide-react";
 
-interface SkillCategory {
+interface Skill {
   name: string;
-  skills: string[];
+  icon: React.ReactNode;
 }
 
 const Skills: React.FC = () => {
-  const skillCategories: SkillCategory[] = [
-    {
-      name: "Languages",
-      skills: ["C++", "C", "JavaScript", "HTML", "CSS", "SQL"],
-    },
-    {
-      name: "Technologies/Frameworks",
-      skills: ["Git", "GitHub", "Vercel", "Netlify"],
-    },
-    {
-      name: "Skills",
-      skills: ["Data Structures and Algorithms", "Problem-Solving", "Responsive Web Design", "Scripting in JavaScript"],
-    },
+  const skills: Skill[] = [
+    { name: "C++", icon: <Terminal className="h-5 w-5 text-primary" /> },
+    { name: "C", icon: <Terminal className="h-5 w-5 text-primary" /> },
+    { name: "JavaScript", icon: <Code className="h-5 w-5 text-yellow-500" /> },
+    { name: "HTML", icon: <Code className="h-5 w-5 text-orange-500" /> },
+    { name: "CSS", icon: <Code className="h-5 w-5 text-blue-500" /> },
+    { name: "SQL", icon: <Database className="h-5 w-5 text-green-500" /> },
+    { name: "JAVA", icon: <Coffee className="h-5 w-5 text-red-500" /> },
+    { name: "Bootstrap 5", icon: <Layout className="h-5 w-5 text-purple-500" /> },
+    { name: "Figma", icon: <Figma className="h-5 w-5 text-pink-500" /> },
+    { name: "Git", icon: <GitBranch className="h-5 w-5 text-orange-600" /> },
+    { name: "GitHub", icon: <Github className="h-5 w-5 text-gray-600 dark:text-gray-400" /> },
+    { name: "Tailwind", icon: <Cpu className="h-5 w-5 text-blue-400" /> },
+    { name: "TypeScript", icon: <FileJson className="h-5 w-5 text-blue-600" /> },
   ];
 
   return (
@@ -32,28 +37,23 @@ const Skills: React.FC = () => {
           <div className="w-32 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="glass-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <h3 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">
-                {category.name}
-              </h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {category.skills.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-mono text-gray-800 dark:text-gray-200 shadow-sm hover:shadow-md hover:border-primary hover:text-primary transition-all duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className="glass-card px-4 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="mb-3 bg-white dark:bg-gray-800 p-3 rounded-full border border-gray-200 dark:border-gray-700">
+                  {skill.icon}
+                </div>
+                <span className="font-mono text-sm text-center text-gray-800 dark:text-gray-200">
+                  {skill.name}
+                </span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="mt-16 max-w-4xl mx-auto">
