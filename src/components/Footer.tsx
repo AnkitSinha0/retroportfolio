@@ -1,4 +1,3 @@
-
 import React from "react";
 import SocialLinks from "./SocialLinks";
 
@@ -10,7 +9,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center space-y-6">
           <div className="text-3xl font-pixel text-white">
-            <span className="text-primary">ANKIT</span> SINHA
+            <span className="text-primary">WEB</span> PORTFOLIO
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 max-w-2xl">
@@ -25,7 +24,7 @@ const Footer: React.FC = () => {
           <SocialLinks className="my-6" />
           
           <div className="text-sm text-gray-400 text-center">
-            <p>&copy; {currentYear} Ankit Sinha. All rights reserved.</p>
+            <p>&copy; {currentYear} Web Portfolio. All rights reserved.</p>
             <p className="mt-2">
               <span className="inline-block h-3 w-3 bg-primary animate-pulse rounded-full mr-2"></span>
               Made with passion and precision

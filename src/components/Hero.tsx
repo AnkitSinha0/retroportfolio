@@ -1,4 +1,3 @@
-
 import React from "react";
 import SocialLinks from "./SocialLinks";
 
@@ -30,7 +29,7 @@ const Hero: React.FC = () => {
           </p>
           
           <p className="text-sm md:text-base mb-8 max-w-xl mx-auto text-gray-600 dark:text-gray-400">
-            Chakradharpur, Jharkhand 833102
+            Jalandhar, Punjab
           </p>
           
           <SocialLinks size={24} className="mb-8" />
