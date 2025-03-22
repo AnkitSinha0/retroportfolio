@@ -96,7 +96,7 @@
   }
 
   .pixel-btn {
-    @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium transition duration-300 ease-out border-2 rounded-none group;
+    @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium transition duration-300 ease-out border-2 rounded-none;
   }
 
   .pixel-card {
