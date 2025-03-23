@@ -3,12 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   // Handle scroll event to style navbar
   useEffect(() => {
@@ -24,30 +22,13 @@ const Navbar: React.FC = () => {
   };
 
   const scrollToSection = (id: string) => {
-    // Check if we're on the home page
-    if (window.location.pathname === "/") {
-      const element = document.getElementById(id);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop - 80,
-          behavior: "smooth",
-        });
-        setIsMenuOpen(false);
-      }
-    } else {
-      // If not on home page, navigate to home and then scroll
-      navigate("/");
-      // Use a small timeout to ensure navigation completes before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80,
-            behavior: "smooth",
-          });
-          setIsMenuOpen(false);
-        }
-      }, 100);
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: "smooth",
+      });
+      setIsMenuOpen(false);
     }
   };
 
@@ -62,8 +43,8 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Link
-              to="/"
+            <a
+              href="#hero"
               className="text-xl font-pixel text-primary hover:text-primary/80 transition-colors"
               onClick={(e) => {
                 e.preventDefault();
@@ -71,7 +52,7 @@ const Navbar: React.FC = () => {
               }}
             >
               ANKIT SINHA
-            </Link>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
