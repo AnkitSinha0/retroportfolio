@@ -13,10 +13,9 @@ const NotFound = () => {
       location.pathname
     );
     
-    // If we're in production and on GitHub Pages, we have a special handling
-    // But we don't want to redirect if the user is already on a valid route but seeing this page intentionally
-    if (window.location.hostname === "ankitsin.in" && !location.pathname.includes("/?/")) {
-      console.log("Attempting to recover from 404 on GitHub Pages...");
+    // If we're in a fresh load situation with a valid path (not the redirect from 404.html)
+    if (!location.pathname.includes("/?/") && window.location.search !== "?/") {
+      console.log("Handling 404 routing...");
     }
   }, [location.pathname]);
 
