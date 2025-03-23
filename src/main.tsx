@@ -12,7 +12,6 @@ if (!rootElement) {
   
   try {
     root.render(<App />);
-    console.log("App rendered successfully");
   } catch (error) {
     console.error("Failed to render the app:", error);
     

@@ -1,23 +1,10 @@
 
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import Layout from "@/components/Layout";
 
 const NotFound = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-    
-    // If we're in a fresh load situation with a valid path (not the redirect from 404.html)
-    if (!location.pathname.includes("/?/") && window.location.search !== "?/") {
-      console.log("Handling 404 routing...");
-    }
-  }, [location.pathname]);
 
   return (
     <Layout>
